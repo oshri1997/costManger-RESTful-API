@@ -1,12 +1,12 @@
-const CostItem = require("../models/costsItemModel");
-const User = require("../models/userModel");
-const { Categories } = require("../const");
+import CostItem from "../models/costsItemModel.js";
+import User from "../models/userModel.js";
+import { Categories } from "../const.js";
 
 //POST Request
-exports.addCostItem = async (req, res) => {
+export const addCostItem = async (req, res) => {
   try {
     //find the first user matches the userId
-    const userExist = await User.findOne({ id: req.body.userId });
+    const userExist = await User.findOne({ id: req.body.user_id });
     //user not exist
     if (!userExist) {
       return res.status(404).send({
@@ -17,15 +17,11 @@ exports.addCostItem = async (req, res) => {
     // Create a new cost item using the request body
     const newCostItem = new CostItem(req.body);
     await newCostItem.save();
-    const newCostItemObject = newCostItem.toObject();
-    // Delete _id and __v properties from the plain JavaScript object
-    delete newCostItemObject._id;
-    delete newCostItemObject.__v;
 
     // Send a success response with the created cost item
     res.status(201).send({
       message: "Cost Item successfully created",
-      data: newCostItemObject, // Assuming you want to return the created item to the client
+      newCostItem, // Assuming you want to return the created item to the client
     });
   } catch (error) {
     // Send an error response if the creation fails
@@ -37,7 +33,7 @@ exports.addCostItem = async (req, res) => {
 };
 
 //GET Request
-exports.getReport = async (req, res) => {
+export const getReport = async (req, res) => {
   try {
     const { userId, year, month } = req.query;
 
@@ -50,10 +46,7 @@ exports.getReport = async (req, res) => {
     }, {});
 
     // Send a success response with the report cost item
-    res.status(201).send({
-      message: "Report successfully fetched",
-      data: reports,
-    });
+    res.status(201).send(reports);
     // Send an error response if the report fails
   } catch (error) {
     res.status(400).send({

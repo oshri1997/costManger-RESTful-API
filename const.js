@@ -1,14 +1,14 @@
-exports.Categories = [
-  "Food",
-  "Health",
-  "Housing",
-  "Sport",
-  "Education",
-  "Transportation",
-  "Other",
+export const Categories = [
+  "food",
+  "health",
+  "housing",
+  "sport",
+  "education",
+  "transportation",
+  "other",
 ];
 
-exports.Months = [
+export const Months = [
   "January",
   "February",
   "March",

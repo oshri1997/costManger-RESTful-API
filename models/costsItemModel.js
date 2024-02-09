@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
-const { Categories, Months } = require("../const");
-const { isValidDay } = require("../helper");
+import mongoose from "mongoose";
+import { Categories, Months } from "../const.js";
+import { isValidDay } from "../utlis.js";
 
 //Creating a new Schema(collection) of costs
 const costItemSchema = new mongoose.Schema({
-  userId: {
+  user_id: {
     type: Number,
     required: [true, "Cost item must include a user ID!"],
   },
@@ -39,14 +39,13 @@ const costItemSchema = new mongoose.Schema({
         // Validate the day for the given month and year
         return isValidDay(year, monthIndex, value);
       },
-      message: (props) =>
-        `${props.value} is not a valid day for the provided month and year!`,
+      message: (props) => `${props.value} is not a valid day for the provided month and year!`,
     },
   },
 
   id: {
     type: Number,
-    min: 1,
+    default: new Date().getTime(), //unique id
   },
 
   description: {
@@ -74,4 +73,4 @@ const costItemSchema = new mongoose.Schema({
 });
 
 const CostItem = mongoose.model("Costs", costItemSchema);
-module.exports = CostItem;
+export default CostItem;

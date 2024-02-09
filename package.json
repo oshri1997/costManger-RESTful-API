@@ -2,6 +2,7 @@
   "name": "cost_manager_restful_web_services",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "jest"

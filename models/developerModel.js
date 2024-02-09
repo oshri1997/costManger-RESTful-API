@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 //Creating a new Schema(collection) of developers
 const developerSchema = new mongoose.Schema({
@@ -7,11 +7,11 @@ const developerSchema = new mongoose.Schema({
     required: [true, "Developer property must include ID!"],
   },
 
-  firstName: {
+  first_name: {
     type: String,
     required: [true, "Developer property must include first name!"],
   },
-  lastName: {
+  last_name: {
     type: String,
     required: [true, "Developer property must include last name!"],
   },
@@ -27,4 +27,4 @@ const developerSchema = new mongoose.Schema({
 });
 
 const Developer = mongoose.model("Developer", developerSchema);
-module.exports = Developer;
+export default Developer;

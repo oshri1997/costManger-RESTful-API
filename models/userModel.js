@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 //Creating a new Schema(collection) of developers
 const userSchema = new mongoose.Schema({
@@ -6,11 +6,11 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: [true, "User property must include ID!"],
   },
-  firstName: {
+  first_name: {
     type: String,
     required: [true, "User property must include first name!"],
   },
-  lastName: {
+  last_name: {
     type: String,
     required: [true, "User property must include last name!"],
   },
@@ -21,4 +21,4 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("Users", userSchema);
-module.exports = User;
+export default User;

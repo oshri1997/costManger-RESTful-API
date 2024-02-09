@@ -1,7 +1,7 @@
-const express = require("express");
-const { createUser } = require("../controllers/userController");
-const { getReport, addCostItem } = require("../controllers/costController");
-const { getAllDevelopers, createDeveloper } = require("../controllers/developerController");
+import express from "express";
+import { createUser } from "../controllers/userController.js";
+import { addCostItem, getReport } from "../controllers/costController.js";
+import { createDeveloper, getAllDevelopers } from "../controllers/developerController.js";
 const router = express.Router();
 
 //GET Routes
@@ -13,4 +13,4 @@ router.post("/addcost", addCostItem);
 router.post("/createuser", createUser);
 router.post("/createdeveloper", createDeveloper);
 
-module.exports = router;
+export default router;
