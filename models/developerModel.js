@@ -7,11 +7,11 @@ const developerSchema = new mongoose.Schema({
     required: [true, "Developer property must include ID!"],
   },
 
-  first_name: {
+  firstname: {
     type: String,
     required: [true, "Developer property must include first name!"],
   },
-  last_name: {
+  lastname: {
     type: String,
     required: [true, "Developer property must include last name!"],
   },
