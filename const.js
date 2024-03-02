@@ -1,4 +1,4 @@
-export const Categories = [
+const categories = [
   "food",
   "health",
   "housing",
@@ -8,17 +8,4 @@ export const Categories = [
   "other",
 ];
 
-export const Months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+export default categories;

@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import { Categories, Months } from "../const.js";
+import categories from "../const.js";
 import { isValidDay } from "../utlis.js";
-
 //Creating a new Schema(collection) of costs
 const costItemSchema = new mongoose.Schema({
   user_id: {
@@ -25,8 +24,12 @@ const costItemSchema = new mongoose.Schema({
     //only days that matches the correspond months
     type: Number,
     required: [true, "Cost item must include a day!"],
-    min: 1,
-    max: 31,
+    validate: {
+      validator: function (value) {
+        return isValidDay(this.year, this.month, value);
+      },
+      message: (props) => `${props.value} is not a valid day!`,
+    },
   },
 
   id: {
@@ -45,7 +48,7 @@ const costItemSchema = new mongoose.Schema({
     validate: {
       //Only Categories like Food Housing etc....
       validator: function (value) {
-        return Categories.includes(value);
+        return categories.includes(value);
       },
       message: (props) => `${props.value} is not a valid category!`,
     },

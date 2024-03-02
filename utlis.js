@@ -9,14 +9,12 @@ export const mongoDbConnection = async () => {
   }
 };
 
-export const isValidDay = (i_Year, i_Month, i_Day) => {
+export const isValidDay = (year, month, day) => {
   // Adjust month value since JavaScript months are zero-based (0 for January, 11 for December)
-  i_Month--;
+  month--;
   // Create a Date object with the provided year, month, and day
-  const date = new Date(i_Year, i_Month, i_Day);
+  const date = new Date(year, month, day);
   // Check if the year, month, and day match the provided values
   // (JavaScript will automatically adjust the day if it's out of range for the given month)
-  return (
-    date.getFullYear() === i_Year && date.getMonth() === i_Month && date.getDate() === i_Day
-  );
+  return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
 };
