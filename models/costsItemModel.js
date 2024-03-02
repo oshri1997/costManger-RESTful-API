@@ -15,15 +15,10 @@ const costItemSchema = new mongoose.Schema({
   },
 
   month: {
-    type: String,
+    type: Number,
     required: [true, "Cost item must include a month!"],
-    validate: {
-      //only month like January February etc
-      validator: function (value) {
-        return Months.includes(value);
-      },
-      message: (props) => `${props.value} is not a valid month!`,
-    },
+    min: 1,
+    max: 12,
   },
 
   day: {
