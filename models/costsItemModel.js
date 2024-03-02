@@ -25,17 +25,8 @@ const costItemSchema = new mongoose.Schema({
     //only days that matches the correspond months
     type: Number,
     required: [true, "Cost item must include a day!"],
-    validate: {
-      validator: function (value) {
-        // Get the year and month from the document
-        const year = this.year;
-        const monthIndex = Months.indexOf(this.month) + 1; // Adjust month value for Date constructor
-
-        // Validate the day for the given month and year
-        return isValidDay(year, monthIndex, value);
-      },
-      message: (props) => `${props.value} is not a valid day for the provided month and year!`,
-    },
+    min: 1,
+    max: 31,
   },
 
   id: {
