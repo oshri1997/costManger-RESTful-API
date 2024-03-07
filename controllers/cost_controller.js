@@ -32,7 +32,7 @@ export const addCostItem = async (req, res) => {
 //GET Request
 export const getReport = async (req, res) => {
   try {
-    const { userId, year, month } = req.query;
+    const { user_id, year, month } = req.query;
     const userExist = await User.findOne({ id: req.query.user_id });
     //user not exist
     if (!userExist) {
@@ -40,7 +40,7 @@ export const getReport = async (req, res) => {
         message: "User not found",
       });
     }
-    const costs = await CostItem.find({ userId, year, month });
+    const costs = await CostItem.find({ user_id, year, month });
     const reports = categories.reduce((acc, category) => {
       acc[category] = costs
         .filter((cost) => cost.category === category)

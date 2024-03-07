@@ -2,7 +2,7 @@ import requests
 import sys
 
 filename = input("filename=")
-line = "http://localhost:3000"
+line = "https://costmanger.onrender.com"
 output = open(filename,"w")
 sys.stdout = output
 print(line)
