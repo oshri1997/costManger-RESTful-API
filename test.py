@@ -1,3 +1,4 @@
+
 import requests
 import sys
 
@@ -56,8 +57,7 @@ try:
    text = ""
    #getting details of team manager
    url = line + "/addcost/"
-   data = requests.post(url,
-   	json={'user_id':123123,'year':2023,'month':3,'day':2,'description':'milk 9','category':'food','sum':8})
+   data = requests.post(url,json={'user_id':123123,'year':2024,'month':4,'day':2,'description':'milk 9','category':'food','sum':8})
    print("url="+url)
    print("data.status_code="+str(data.status_code))
    print(data.content)
@@ -76,7 +76,7 @@ print("------------------------------")
 try:
    text = ""
    #getting details of team manager
-   url = line + "/report/?user_id=123123&year=2023&month=3"
+   url = line + "/report/?user_id=123123&year=2024&month=4"
    data = requests.get(url)
    print("url="+url)
    print("data.status_code="+str(data.status_code))
