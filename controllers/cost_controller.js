@@ -49,7 +49,7 @@ export const getReport = async (req, res) => {
     }, {});
 
     // Send a success response with the report cost item
-    res.status(201).send(reports);
+    res.status(200).send(reports);
     // Send an error response if the report fails
   } catch (error) {
     res.status(400).send({
