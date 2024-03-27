@@ -10,12 +10,10 @@ const costItemSchema = new mongoose.Schema({
 
   year: {
     type: Number,
-    required: [true, "Cost item must include a year!"],
   },
 
   month: {
     type: Number,
-    required: [true, "Cost item must include a month!"],
     min: 1,
     max: 12,
   },
@@ -23,7 +21,6 @@ const costItemSchema = new mongoose.Schema({
   day: {
     //only days that matches the correspond months
     type: Number,
-    required: [true, "Cost item must include a day!"],
     validate: {
       validator: function (value) {
         return isValidDay(this.year, this.month, value);

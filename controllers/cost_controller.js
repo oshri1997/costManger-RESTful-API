@@ -13,7 +13,18 @@ export const addCostItem = async (req, res) => {
         message: "User not found",
       });
     }
-
+    if (!req.body.year && !req.body.month && !req.body.day) {
+      //if year, month, day are not provided set them to the current date
+      req.body.year = new Date().getFullYear();
+      req.body.month = new Date().getMonth() + 1;
+      req.body.day = new Date().getDate();
+    }
+    if (!req.body.year || !req.body.month || !req.body.day) {
+      //if year OR month OR day return error
+      return res.status(400).send({
+        message: "Year or Month or Day are required",
+      });
+    }
     // Create a new cost item using the request body
     const newCostItem = new CostItem(req.body);
     await newCostItem.save();

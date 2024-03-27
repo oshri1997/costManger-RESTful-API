@@ -3,7 +3,8 @@ import requests
 import sys
 
 filename = input("filename=")
-line = "https://costmanger.onrender.com"
+# line = "https://costmanger.onrender.com"
+line = "http://localhost:3000"
 output = open(filename,"w")
 sys.stdout = output
 print(line)
@@ -37,7 +38,7 @@ print("------------------------------")
 try:
    text = ""
    #getting details of team manager
-   url = line + "/report/?user_id=123123&year=2023&month=3"
+   url = line + "/report/?user_id=123123&year=2024&month=4"
    data = requests.get(url)
    print("url="+url)
    print("data.status_code="+str(data.status_code))
